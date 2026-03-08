@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO List </title>
+  <!-- <script src="todo.js"></script> -->
+  <style>
+    .container {
+      background-color: antiquewhite;
+      border: 2px solid aqua;
+    }
+
+  
+    p {
+      height: 30px;
+      width: 600px;
+      border: 1px solid black;
+
+    }
+
+    .butn {
+      margin-left: 500px;
+      background-color: green;
+      font-size: 16px;
+      border: 2px solid yellow;
+      border-radius: 20px;
+      color: aliceblue;
+    }
+
+    .delbtn {
+      margin-left: 30px;
+      border: 2px solid rgb(124, 124, 221);
+      background-color: rgb(253, 22, 22);
+      color: black;
+      border-radius: 10px;
+      font-size: large;
+    }
+
+    .delbtn:hover {
+      background-color: rgb(1, 47, 25);
+      color: aliceblue;
+      transform: scale(.9);
+
+    }
+
+    ul{
+      width: 700px;
+      margin: auto;
+      background-color: rgb(31, 20, 20);
+      border: 2px solid black;
+      border-radius: 20px;
+    }
+
+    input, #btn{
+      font-size: x-large;
+      border-radius: 5px;
+    }
+
+    #btn{
+      background-color: aqua;
+    }
+
+    #btn:hover{
+      background-color: rgb(243, 138, 10);
+    }
+
+    
+
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">This is Your TODO List -</h1>
+    <center><input type="  text" placeholder="  Enter you task..."> <button id="btn">Add Task</button></center>
+<br>
+   <ul></ul>
+ <br>
+  </div>
+
+  <script>
+
+    let btn = document.querySelector('#btn');
+    let ul = document.querySelector('ul');
+    let inp = document.querySelector('input');
+    btn.addEventListener('click', () => {
+      let task = document.createElement('li');
+      let delBtn = document.createElement('button');
+      delBtn.innerText = "Delete Task";
+      delBtn.classList.add("delbtn");
+      task.style.marginBottom = "10px";
+      task.style.fontSize = 'large';
+      task.style.color = "white";
+      task.innerText = inp.value;
+      task.appendChild(delBtn);
+      ul.appendChild(task);
+      inp.value = "";
+    });
+
+    ul.addEventListener("click", function (event) {
+      if (event.target.classList.contains("delbtn")) {
+        let par = event.target.parentElement;
+        par.remove();
+      }
+    });
+
+
+    /* let delbtns = document.querySelectorAll(".delbtn");
+    for(btns of delbtns){
+     btns.addEventListener('click', function() {
+      let par = this.parentElement;
+      console.log(par);
+      par.remove();
+     });
+    }  */
+
+  </script>
+
+</body>
+
+</html>
